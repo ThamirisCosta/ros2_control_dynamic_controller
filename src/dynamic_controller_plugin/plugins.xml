@@ -1,0 +1,8 @@
+<library path="dynamic_controller_plugin">
+  <class
+    name="effort_controllers/ComputedTorqueController"
+    type="effort_controllers::ComputedTorqueController"
+    base_class_type="controller_interface::ControllerInterface">
+    <description>Computed Torque Controller with gravity compensation.</description>
+  </class>
+</library>

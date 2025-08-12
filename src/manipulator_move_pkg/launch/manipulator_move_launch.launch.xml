@@ -1,0 +1,19 @@
+<launch>
+    <!-- Nó para publicar a posição desejada -->
+    <node pkg="manipulator_move_pkg" exec="desired_position" name="desired_position_node" output="screen">
+        <param name="publish_rate" value="50.0"/>  <!-- Hz -->
+    </node>
+
+    <!-- Nó para interpolação de trajetória -->
+    <node pkg="manipulator_move_pkg" exec="trajectory" name="trajectory_interpolation_node" output="screen">
+        <param name="publish_rate" value="50.0"/>  <!-- Hz -->
+        <param name="interpolation_step" value="0.02"/>  <!-- segundos -->
+    </node>
+
+    <!-- Nó da cinemática KDL -->
+    <node pkg="kinematics_kdl" exec="main" name="kinematics_kdl_node" output="screen">
+        <param name="robot_description" value="$(command 'xacro $(find-pkg-share manipulator_description_pkg)/urdf/manipulator_description.urdf')"/>
+        <param name="end_effector_link" value="Link_7"/>
+        <param name="publish_rate" value="50.0"/>  <!-- Hz -->
+    </node>
+</launch>

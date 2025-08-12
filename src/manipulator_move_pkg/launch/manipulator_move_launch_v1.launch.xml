@@ -1,0 +1,13 @@
+<launch>
+	<!--Launch da descrição do robô, controladores e gazebo (rviz está comentado)-->
+	<!--include file="$(find-pkg-share manipulator_launch_pkg)/launch/manipulator_launch.launch.py"/-->
+	
+	<!-- Launch do nó Python para publicar a posição desejada -->
+	<node pkg="manipulator_move_pkg" exec="desired_position" output="screen"/>
+
+	<!-- Launch do nó Python para obter a trajetória desejada -->
+	<node pkg="manipulator_move_pkg" exec="trajectory" output="screen"/>
+	
+	<!-- Launch do nó da cinemática kdl -->
+	<node pkg="kinematics_kdl" exec="main" output="screen"/>
+</launch>

@@ -1,0 +1,25 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 500
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+      publish_rate: 100
+
+    computed_torque_controller:
+      type: effort_controllers/ComputedTorqueController
+
+
+
+computed_torque_controller:
+  ros__parameters:
+    joints: ["J1","J2","J3","J4","J5","J6","J7"]
+    chain:
+      root: "base_link"
+      tip: "Link_7"
+    gravity:
+      x: 0.0
+      y: 0.0
+      z: -9.81
+    Kp: [10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+    Kd: [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
